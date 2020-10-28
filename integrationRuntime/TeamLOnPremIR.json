@@ -1,0 +1,6 @@
+{
+	"name": "TeamLOnPremIR",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
