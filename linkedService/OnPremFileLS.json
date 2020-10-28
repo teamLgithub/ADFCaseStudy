@@ -1,0 +1,17 @@
+{
+	"name": "OnPremFileLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "D:\\Yogi Office\\Data Batch 2\\Project Gladiator",
+			"userId": "HP-Laptop\\YogesH",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmODkwNjVhYy0xZDFhLTQ4NzEtYjRjOC0zNTdlNGE1MzZkMGIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "TeamLOnPremIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
