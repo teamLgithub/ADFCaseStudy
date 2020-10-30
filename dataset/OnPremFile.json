@@ -1,0 +1,29 @@
+{
+	"name": "OnPremFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPremFileLS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sheetnames": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheetnames",
+				"type": "Expression"
+			},
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "SupplyQualityAnalysis.xlsx"
+			},
+			"firstRowAsHeader": false
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

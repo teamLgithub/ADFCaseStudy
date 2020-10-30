@@ -1,0 +1,43 @@
+{
+	"name": "scheduletrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "copyonprem2sql",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sheetnames": [
+						"DefectType",
+						"Vendor",
+						"Category",
+						"Plant",
+						"Metrics",
+						"MaterialType",
+						"Defect"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-10-29T09:52:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						12
+					]
+				}
+			}
+		}
+	}
+}
