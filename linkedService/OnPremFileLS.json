@@ -7,7 +7,7 @@
 		"typeProperties": {
 			"host": "D:\\Yogi Office\\Data Batch 2\\Project Gladiator\\DATA",
 			"userId": "HP-Laptop\\YogesH",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwNjFmYWI4ZC1hY2JiLTRjMDUtYTEyNy1kMjk2ZTg3ODFhZmUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMmZiNmE0NS01ODk5LTQ3NTAtOWIwNC0xZTMyZTg0YjFiNzkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "TeamLOnPremIR",

@@ -1,0 +1,35 @@
+{
+	"name": "ScheduledTrigger2",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "copyfromonprem2sql",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sheetnames": [
+						"DefectType",
+						"Vendor",
+						"Category",
+						"Plant",
+						"Metrics",
+						"MaterialType",
+						"Defect"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2020-11-02T12:14:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"name": "newtrigg",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "copyfromonprem2sqlwithproc",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sheetnames": [
+						"Date",
+						"DefectType",
+						"Vendor",
+						"Category",
+						"Plant",
+						"Metrics",
+						"MaterialType",
+						"Defect"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 12,
+				"startTime": "2020-11-02T12:16:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

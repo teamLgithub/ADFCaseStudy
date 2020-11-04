@@ -1,0 +1,158 @@
+{
+	"name": "copyfromonprem2sql",
+	"properties": {
+		"activities": [
+			{
+				"name": "copyfirstsheet",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "FileServerReadSettings",
+							"recursive": true
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "OnPremFile",
+						"type": "DatasetReference",
+						"parameters": {
+							"Sheetname": "Date"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestDS",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "Date"
+						}
+					}
+				]
+			},
+			{
+				"name": "copyothersheets",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "copyfirstsheet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.sheetnames",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "copyfromonprem2sql",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "FileServerReadSettings",
+										"recursive": true
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"tableOption": "autoCreate"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "OnPremFile",
+									"type": "DatasetReference",
+									"parameters": {
+										"Sheetname": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestDS",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"sheetnames": {
+				"type": "array",
+				"defaultValue": [
+					"DefectType",
+					"Vendor",
+					"Category",
+					"Plant",
+					"Metrics",
+					"MaterialType",
+					"Defect"
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-11-02T05:56:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
